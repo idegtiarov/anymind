@@ -1,0 +1,15 @@
+version: '2'
+services:
+
+  anymind:
+    container_name: ANY_local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "sleep 5 && python manage.py runserver 0.0.0.0:8008 --settings=config.settings"
+    volumes:
+      - .:/anymind
+    ports:
+      - "8001:8008"
+    stdin_open: true
+    tty: true
